@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap");
+body {
+  font-family: "Rubik", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+#temtem {
+  width: 215px;
+}
+
+.select2-selection__arrow {
+  background: 393939;
+  border-left: 1px solid #ccc;
+  border-radius: 0 3px 3px 0;
+}
+
+#clearSelect2 {
+  padding: 1px;
+  color: #a8a8a8;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+#clearSelect2:hover {
+  color: #f9f9f9;
+}
+
+.select2-selection__arrow b {
+  border-color: red;
+}
+
+form {
+  padding: 1em;
+  color: #feffff;
+  background-color: #1e1e1e;
+  border-radius: 20px;
+}
+
+svg {
+  fill: #1e1e1e;
+  transition: transform 0.4s ease-in-out;
+}
+svg:hover {
+  transform: rotate(360deg);
+}
+
+h1,
+h2 {
+  font-size: 2em;
+  font-weight: 900;
+  letter-spacing: -2px;
+  color: #feffff;
+  -webkit-text-stroke: -1.5px #1e1e1e;
+  text-shadow: 0.9px 0.9px 0 #1e1e1e, -0.9px 0.9px 0 #1e1e1e, -0.9px -0.9px 0 #1e1e1e, 0.9px -0.9px 0 #1e1e1e;
+}
+
+@media only screen and (max-width: 992px) {
+  #photo {
+    margin-bottom: -18px;
+  }
+}
+.name {
+  margin: 0 0 -29px 20px;
+}
+
+.info {
+  padding: 20px;
+  background-color: #2a2a2a;
+  color: #feffff;
+  border-radius: 20px;
+}
+.info p {
+  margin-bottom: 5px;
+}
+.info a {
+  margin-bottom: 5px;
+  font-size: small;
+}
+
+img#icon {
+  width: 250px;
+}
+
+img.type {
+  height: 30px;
+}
+
+#debilities div {
+  text-align: center;
+}
+#debilities div img {
+  padding-bottom: 2px;
+  margin-bottom: 2px;
+  border-bottom: 2px solid #feffff;
+}
+#debilities div p {
+  font-size: 1em;
+  font-weight: 900;
+  margin-bottom: 0px;
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  line-height: 60px;
+  background-color: #2a2a2a;
+  color: #feffff;
+}
+
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+a {
+  color: #1bd1d3;
+}/*# sourceMappingURL=style.css.map */
