@@ -36,9 +36,9 @@ function createTemplate() {
     "</div>" +
     "<div class='info'>" +
     "<a class='align-self-end' target='_blank'></a>" +
-    "<p>Debilidades:</p>" +
-    "<div id='debilities' class='row'></div>" +
-    "</div>" +
+    "<div id='debilities'><p>Debilidades:</p>" +
+    "<div id='debilities_list' class='row'></div>" +
+    "</div></div>" +
     "</div>";
   $(".row").append(data);
 }
@@ -63,7 +63,6 @@ $(document).ready(function () {
             $(".name h2").text(data["name"]);
             $("#info a").text("Más información...");
             $("#info a").attr("href", data["wikiUrl"]);
-
             // Tipos del TemTem
             data["types"].forEach((type) => {
               $("#temtemTypes").append(
@@ -80,6 +79,10 @@ $(document).ready(function () {
             } else {
               $("#icon").attr("src", data["portraitWikiUrl"]);
             }
+
+            // if (data["evolution"]["evolves"]) {
+            //   evolution(selectedValue, data["evolution"]);
+            // }
             weakness(data["types"]);
             changeColor();
           }
@@ -93,6 +96,44 @@ $(document).ready(function () {
     }
   });
 });
+
+// Get evolution from the Temtem
+function evolution(selectedValue, data) {
+  $("#debilities").before("<div id='evolution'>");
+  $("#evolution").append("<p>Evolución:</p><div id='evolution_list'>");
+  data["evolutionTree"].forEach((element) => {
+    $("#evolution_list").append("<div class='evolution_temtem'>");
+    $temtemDiv = $(".evolution_temtem");
+    $("#evolution_list .evolution_temtem:last-child").append(
+      "<h5>" + element.name + "</h5>"
+    );
+    $temtemDiv.after("<div class='evolution_levels'>");
+
+    if (element.level !== "0") {
+      var div = "<div><p>" + element.level + " " + element.type + "</p></div>";
+    }
+    if (element.number == selectedValue) {
+      var div = "<div></div>";
+    } else {
+      var div = "<div><a href='#'><h5>" + element.name + "</h5><a/></div>";
+    }
+    console.log(selectedValue);
+  });
+}
+
+function getDataTemtem(selectedValue) {
+  $.ajax({
+    type: "GET",
+    url: "https://temtem-api.mael.tech/api/temtems/" + selectedValue,
+    dataType: "json",
+    success: function (data) {
+      return data;
+    },
+    error: function () {
+      console.error("Error al obtener la información del TemTem.");
+    },
+  });
+}
 
 // Get weakness TemTem
 function weakness(types) {
@@ -148,10 +189,12 @@ function weakness(types) {
             sumarDebilidadesTipo(debilidadesTipo2);
           }
 
-          $("#debilities").empty();
+          $("#debilities_list").empty();
           for (var tipo in sumaDebilidades) {
             var img =
-              "<div class='col-lg-1 col-2 pt-2 pb-3 pb-lg-0'><img class='type' src='../images/types/" +
+              "<div class='col-lg-1 col-2 pt-2 pb-3 pb-lg-0 weakness_" +
+              sumaDebilidades[tipo].toString().replace(".", "") +
+              "'><img class='type' src='../images/types/" +
               tipo +
               ".png'><p id='calculo'>";
             if (sumaDebilidades[tipo] === 0.25) {
@@ -164,7 +207,7 @@ function weakness(types) {
               img += sumaDebilidades[tipo];
             }
             img += "</p></div>";
-            $("#debilities").append(img);
+            $("#debilities_list").append(img);
           }
         }
       },
@@ -179,7 +222,6 @@ function weakness(types) {
 $(document).ready(function () {
   $("#temtem").select2({
     placeholder: "Selecciona un TemTem...",
-    tags: true,
   });
 
   $("#clearSelect2").on("click", function () {

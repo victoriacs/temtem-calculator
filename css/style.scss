@@ -1,10 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap");
+$super_effective: #76f276;
+$effective: #4aa84a;
+$not_very_effective: #fcfc62;
+$not_effective: #ff6363;
 $text-border:
     0.9px 0.9px 0 #1e1e1e,
     -0.9px 0.9px 0 #1e1e1e,
     -0.9px -0.9px 0 #1e1e1e,
     0.9px -0.9px 0 #1e1e1e;
 
+// background: rgb(255,214,96);
+// background: linear-gradient(180deg, rgba(255,214,96,1) 0%, rgba(251,159,88,1) 100%);
 body {
     font-family: "Rubik", sans-serif;
 }
@@ -113,6 +119,20 @@ img.type {
             margin-bottom: 0px;
         }
     }
+}
+
+.weakness_4 {
+    color: $super_effective;
+}
+.weakness_2 {
+    color: $effective;
+}
+.weakness_05 {
+    color: $not_very_effective;
+}
+
+.weakness_025 {
+    color: $not_effective;
 }
 
 footer {

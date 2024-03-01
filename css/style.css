@@ -101,6 +101,22 @@ img.type {
   margin-bottom: 0px;
 }
 
+.weakness_4 {
+  color: #76f276;
+}
+
+.weakness_2 {
+  color: #4aa84a;
+}
+
+.weakness_05 {
+  color: #fcfc62;
+}
+
+.weakness_025 {
+  color: #ff6363;
+}
+
 footer {
   bottom: 0;
   width: 100%;
